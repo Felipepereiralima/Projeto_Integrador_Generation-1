@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -17,16 +18,15 @@ public class Tema {
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private long id_tema;
 	
-	@NotNull (message = "Campo obigatório")
-	@Size (min = 1, max = 50, message = "Digite no mínimo 1 caratere e no máximo 50")
+	@NotBlank (message = "Campo obrigatório")
+	@Size (min = 1, max = 50, message = "Digite no mínimo 1 caractere e no máximo 50")
 	private String nome_categoria;
 	
-	/* Estamos em duvida se o NotNull fica aqui ou não.*/
-	@NotNull(message = "Campo obigatório")
-	@Size (min = 3, max = 500, message = "Digite no mínimo  caratere e no máximo 500")
+	@NotBlank(message = "Campo obrigatório")
+	@Size (min = 3, max = 500, message = "Digite no mínimo 3 caracteres e no máximo 500")
 	private String descricao_categoria;
 	
-	@NotNull
+	@NotBlank
 	private boolean postagens_salvas;
 
 	public long getId_tema() {
@@ -60,7 +60,4 @@ public class Tema {
 	public void setPostagens_salvas(boolean postagens_salvas) {
 		this.postagens_salvas = postagens_salvas;
 	}
-	
-	
-
 }
