@@ -49,7 +49,7 @@ Esse link mostrará o nosso resumo -> https://docs.google.com/document/d/1zjLeTc
 ## 3) DER do Blog Pessoal 
 
  
- <img src = "https://github.com/Caroline-Calixto/Projeto-Integrador/blob/main/Task%202/Task2_Projeto_Integrador.png"> </img>
+ <img src = "https://github.com/DozeroHub/Projeto_Integrador_Generation/blob/main/Task%202/Task2_Projeto_Integrador_atualizada.png"> </img>
       
 
 ## 4) Código em SQL 
