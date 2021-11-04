@@ -1,7 +1,7 @@
 # Projeto Integrador – Rede Social
 
  
- <img src = "https://github.com/DozeroHub/Projeto_Integrador_Generation/blob/main/Design-System/Logotipo-Design-02.png"> </img>
+ <img src = "https://github.com/DozeroHub/Projeto_Integrador_Generation/blob/main/Documenta%C3%A7%C3%A3o/Logotipo-Design-02.png"> </img>
  
  # 👾Time
 
