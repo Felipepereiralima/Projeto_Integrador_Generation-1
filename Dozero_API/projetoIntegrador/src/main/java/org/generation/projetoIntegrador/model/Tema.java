@@ -15,48 +15,48 @@ public class Tema {
 	
 	@Id
 	@GeneratedValue (strategy = GenerationType.IDENTITY)
-	private long id_tema;
+	private long id;
 	
 	@NotBlank (message = "Campo obrigatório")
 	@Size (min = 1, max = 50, message = "Digite no mínimo 1 caractere e no máximo 50")
-	private String nome_categoria;
+	private String nome;
 	
 	@NotBlank(message = "Campo obrigatório")
 	@Size (min = 3, max = 500, message = "Digite no mínimo 3 caracteres e no máximo 500")
-	private String descricao_categoria;
+	private String descricao;
 	
 	@NotBlank
-	private boolean postagens_salvas;
+	private boolean postagensSalvas;
 
-	public long getId_tema() {
-		return id_tema;
+	public long getId() {
+		return id;
 	}
 
-	public void setId_tema(long id_tema) {
-		this.id_tema = id_tema;
+	public void setId(long id) {
+		this.id = id;
 	}
 
-	public String getNome_categoria() {
-		return nome_categoria;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setNome_categoria(String nome_categoria) {
-		this.nome_categoria = nome_categoria;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public String getDescricao_categoria() {
-		return descricao_categoria;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setDescricao_categoria(String descricao_categoria) {
-		this.descricao_categoria = descricao_categoria;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
-	public boolean isPostagens_salvas() {
-		return postagens_salvas;
+	public boolean isPostagensSalvas() {
+		return postagensSalvas;
 	}
 
-	public void setPostagens_salvas(boolean postagens_salvas) {
-		this.postagens_salvas = postagens_salvas;
+	public void setPostagensSalvas(boolean postagensSalvas) {
+		this.postagensSalvas = postagensSalvas;
 	}
 }

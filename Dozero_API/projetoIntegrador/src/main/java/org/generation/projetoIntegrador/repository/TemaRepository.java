@@ -2,12 +2,11 @@ package org.generation.projetoIntegrador.repository;
 
 
 import java.util.List;
-
 import org.generation.projetoIntegrador.model.Tema;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface TemaRepository extends JpaRepository<Tema, Long>{
-	public List<Tema>findAllByTemaNomeCategoriaContainingIgnoreCase(String  nome_categoria );
+public interface TemaRepository extends JpaRepository<Tema, Long> {
+	public List<Tema>findAllByNomeContainingIgnoreCase(String nome);
 }
