@@ -25,7 +25,7 @@ public class Tema {
 	@Size (min = 3, max = 500, message = "Digite no mínimo 3 caracteres e no máximo 500")
 	private String descricao;
 	
-	@NotBlank
+	//@NotBlank
 	private boolean postagensSalvas;
 
 	public long getId() {

@@ -17,9 +17,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-@RequestMapping("/tema")
+@RequestMapping("/temas")
 public class TemaController {
 
 	@Autowired
@@ -41,6 +42,11 @@ public class TemaController {
 		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
 	} // apenas para o adm criar
 
+	@GetMapping("/descricao/{descricao}") // Achando os temas pelo nome_categoria
+	public ResponseEntity<List<Tema>> getByDescricao(@PathVariable String descricao) {
+		return ResponseEntity.ok(repository.findAllByDescricaoContainingIgnoreCase(descricao));
+	}
+	
 	//@GetMapping("/postagens_salvas/{postagens_salvas}")Como fazer??? não sei.
 
 	@PostMapping //Criação de um novo dado para a entidade tema
@@ -53,7 +59,7 @@ public class TemaController {
 		return ResponseEntity.status(HttpStatus.OK).body(repository.save(tema));
 	}
 
-	@DeleteMapping("/{id_tema}")
+	@DeleteMapping("/{id}")
 	public void delete(@PathVariable long id) {
 		repository.deleteById(id);
 	}
