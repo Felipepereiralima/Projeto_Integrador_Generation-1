@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import org.generation.projetoIntegrador.model.Tema;
-import org.generation.projetoIntegrador.repository.TemaRepository;
+import org.generation.projetoIntegrador.model.Usuario;
+import org.generation.projetoIntegrador.repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,54 +19,47 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-@RequestMapping("/temas")
-public class TemaController {
-
+@RequestMapping("/usuarios")
+public class UsuarioController {
+	
 	@Autowired
-	private TemaRepository repository;
-
-	@GetMapping 
-	public ResponseEntity<List<Tema>> getAll() {
+	private UsuarioRepository repository;
+	
+	@GetMapping
+	public ResponseEntity<List<Usuario>>getAll(){
 		return ResponseEntity.ok(repository.findAll());
 	}
-
-	@GetMapping("/{id}") 
-	public ResponseEntity<Tema> getById(@PathVariable long id) {
-		return repository.findById(id).map(resp -> ResponseEntity.ok(resp))
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Usuario>getById(@PathVariable long id){
+		return repository.findById(id)
+				.map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
-
+	
 	@GetMapping("/nome/{nome}") 
-	public ResponseEntity<List<Tema>> getByName(@PathVariable String nome) {
+	public ResponseEntity<List<Usuario>>getByNome(@PathVariable String nome){
 		return ResponseEntity.ok(repository.findAllByNomeContainingIgnoreCase(nome));
-	} 
-
-	@GetMapping("/descricao/{descricao}") 
-	public ResponseEntity<List<Tema>> getByDescricao(@PathVariable String descricao) {
-		return ResponseEntity.ok(repository.findAllByDescricaoContainingIgnoreCase(descricao));
 	}
 	
-	//@GetMapping("/postagens_salvas/{postagens_salvas}")Como fazer??? não sei.
 
 	@PostMapping
-	public ResponseEntity<Tema> postTema(@RequestBody Tema tema) {
-		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(tema));
+	public ResponseEntity<Usuario>postUsuario(@RequestBody Usuario usuario){
+		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(usuario));
 	}
-
-	@PutMapping 
-	public ResponseEntity<Tema> putTema(@Valid @RequestBody Tema tema) {
-		return repository.findById(tema.getId())
-	            .map(resposta -> ResponseEntity.ok().body(repository.save(tema)))
+	
+	@PutMapping
+	public ResponseEntity<Usuario>putUsuario(@Valid @RequestBody Usuario usuario){
+		return repository.findById(usuario.getId())
+	            .map(resposta -> ResponseEntity.ok().body(repository.save(usuario)))
 	            .orElse(ResponseEntity.notFound().build());
 	}
-
+	
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable long id) {
 		repository.deleteById(id);
 	}
+
 }
-
-

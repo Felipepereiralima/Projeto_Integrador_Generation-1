@@ -1,12 +1,18 @@
 package org.generation.projetoIntegrador.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "tb_tema")
@@ -23,10 +29,15 @@ public class Tema {
 	
 	@NotBlank(message = "Campo obrigatório")
 	@Size (min = 3, max = 500, message = "Digite no mínimo 3 caracteres e no máximo 500")
-	private String descricao;
-	
-	//@NotBlank
+	private String descricao;	
+
 	private boolean postagensSalvas;
+	
+	@OneToMany(mappedBy = "tema", cascade = CascadeType.ALL)
+	@JsonIgnoreProperties("tema")
+	private List<Postagem> postagem;
+	
+	
 
 	public long getId() {
 		return id;
@@ -58,5 +69,13 @@ public class Tema {
 
 	public void setPostagensSalvas(boolean postagensSalvas) {
 		this.postagensSalvas = postagensSalvas;
+	}
+
+	public List<Postagem> getPostagem() {
+		return postagem;
+	}
+
+	public void setPostagem(List<Postagem> postagem) {
+		this.postagem = postagem;
 	}
 }
