@@ -48,16 +48,19 @@ public class PostagemController {
 	}
 
 	@PutMapping
-	public ResponseEntity<Postagem> putPostagem(@Valid @RequestBody Postagem postagem) {
-		 return repository.findById(postagem.getId())
-		            .map(resposta -> ResponseEntity.ok().body(repository.save(postagem)))
-		            .orElse(ResponseEntity.notFound().build());
-		    
+	public ResponseEntity<Postagem> putPostagem(@Valid @RequestBody Postagem postagem) {		
+		return repository.findById(postagem.getId())
+				.map(resposta -> ResponseEntity.status(HttpStatus.OK).body(repository.save(postagem)))
+				.orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
 	}
 
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable long id) {
-		repository.deleteById(id);
+	public ResponseEntity<?> deletePostagem(@PathVariable long id) {
+		return repository.findById(id).map(resp -> {
+								repository.deleteById(id);
+								return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+						})
+						.orElse(ResponseEntity.status(HttpStatus.NOT_FOUND).build());
 	}
 
 }
