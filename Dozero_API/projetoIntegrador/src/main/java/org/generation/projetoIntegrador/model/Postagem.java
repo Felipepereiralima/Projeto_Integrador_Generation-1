@@ -16,8 +16,8 @@ import org.hibernate.validator.constraints.URL;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@Table(name = "tb_postagem")
 @Entity
+@Table(name = "tb_postagem")
 public class Postagem {
 	
 	@Id
