@@ -43,8 +43,11 @@ public class Usuario {
 	@Size(min = 2, max = 50, message = "Usuario: O campo deverá conter no minímo 10 e no maximo 50 caracteres")
 	private String usuario;
 	
+	private String foto;
 	
-	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	private String tipo;
+	
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
 	private List<Postagem> postagem;	
 
@@ -105,6 +108,21 @@ public class Usuario {
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
-	
+
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 
 }
